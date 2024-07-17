@@ -9,10 +9,11 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
-        //var inputPath = @"C:\Repos\Nucleus\Net.Api";
-        var inputPath = @"C:\Repos\Nucleus\Net.Libs\docs";
-        var outputPath = @".\Net.Core\src";
-        var promptTemplateSource = @".\Prompts\GenerateDocumentationForThisCode.md.hbs"; // @".\Prompts\Angular2React.md.hbs";
+        var inputPath = @"C:\Repos\Nucleus\Net.Api";
+        //var inputPath = @"C:\Repos\Nucleus\Net.Libs\docs";
+        var outputPath = @".\Net.Api\tests";
+        var promptTemplateSource = @".\Prompts\GenerateUnitTests.md.hbs"; 
+        //var promptTemplateSource = @".\Prompts\GenerateDocumentationForThisCode.md.hbs"; // @".\Prompts\Angular2React.md.hbs";
 
         //app starts here
         inputPath = Path.GetFullPath(inputPath);
@@ -68,13 +69,13 @@ internal class Program
                 await responseStream.FlushAsync();
             }
 
-            // process responses to generate new application
-            Console.WriteLine($"create output: {directory}");
-            if (File.Exists(responseFileContent))
-            {
-                var responseContent = await File.ReadAllTextAsync(responseFileContent);
-                await ProcessResponseContentAsync(responseContent, outFolder);
-            }
+            //// process responses to generate new application
+            //Console.WriteLine($"create output: {directory}");
+            //if (File.Exists(responseFileContent))
+            //{
+            //    var responseContent = await File.ReadAllTextAsync(responseFileContent);
+            //    await ProcessResponseContentAsync(responseContent, outFolder);
+            //}
         }
     }
 

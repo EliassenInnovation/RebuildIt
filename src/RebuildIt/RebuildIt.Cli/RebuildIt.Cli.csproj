@@ -15,11 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Prompts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Prompts\Angular2React.md.hbs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Prompts\GenerateUnitTests.md.hbs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Prompts\GenerateDocumentationForThisCode.md.hbs">
