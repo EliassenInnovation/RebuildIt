@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RebuildIt.Cli", "RebuildIt.Cli\RebuildIt.Cli.csproj", "{8D2732A6-F3AE-4EDC-89D9-E902F74F1B3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RebuildIt.Cli", "RebuildIt.Cli\RebuildIt.Cli.csproj", "{8D2732A6-F3AE-4EDC-89D9-E902F74F1B3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RebuildIt.GroqNet", "RebuildIt.GroqNet\RebuildIt.GroqNet.csproj", "{F8FF5558-402D-470A-AB2C-7CFD6BDADA89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8D2732A6-F3AE-4EDC-89D9-E902F74F1B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D2732A6-F3AE-4EDC-89D9-E902F74F1B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D2732A6-F3AE-4EDC-89D9-E902F74F1B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8FF5558-402D-470A-AB2C-7CFD6BDADA89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8FF5558-402D-470A-AB2C-7CFD6BDADA89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8FF5558-402D-470A-AB2C-7CFD6BDADA89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8FF5558-402D-470A-AB2C-7CFD6BDADA89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
