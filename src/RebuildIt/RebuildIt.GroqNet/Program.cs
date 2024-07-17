@@ -1,7 +1,6 @@
 ﻿using GroqNet;
 using GroqNet.ChatCompletions;
 using HandlebarsDotNet;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.Json;
 
@@ -11,9 +10,10 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
-        var inputPath = @"C:\Repos\Nucleus\NG.Core\src";
-        var outputPath = @".\RX.Core\src";
-        var promptTemplateSource = @".\Prompts\Angular2React.md.hbs";
+        //var inputPath = @"C:\Repos\Nucleus\Net.Api";
+        var inputPath = @"C:\Repos\Nucleus\Net.Libs\docs";
+        var outputPath = @".\Net.Core\src";
+        var promptTemplateSource = @".\Prompts\GenerateDocumentationForThisCode.md.hbs"; // @".\Prompts\Angular2React.md.hbs";
 
         var apiKey = Environment.GetEnvironmentVariable("API_Key_Groq", EnvironmentVariableTarget.User);
 
@@ -35,7 +35,7 @@ internal class Program
 
             var outFolder = Path.Combine(outputPath, realative);
 
-            var files = Directory.GetFiles(directory).Where(f => new FileInfo(f).Length < 10000).ToArray();
+            var files = Directory.GetFiles(directory).Where(f => new FileInfo(f).Length < 10000 && Path.GetExtension(f).ToUpperInvariant() != ".PDF").ToArray();
 
             if (!files.Any()) continue;
             if (!Path.Exists(outFolder)) Directory.CreateDirectory(outFolder);
@@ -52,6 +52,7 @@ internal class Program
                     promptTemplate,
                     new
                     {
+                        date = DateTime.Now,
                         files = (from file in files
                                  let content = File.ReadAllText(file)
                                  where content.Length > 5
@@ -66,11 +67,11 @@ internal class Program
                     );
                 await File.WriteAllTextAsync(promptFile, prompt);
 
-                // post prompt to ollama
+                // post prompt to groq
                 Console.WriteLine($"request completion: {directory}");
                 var response = await client.GetChatCompletionsAsync(new GroqChatHistory { new(prompt) });
 
-                // capture response from ollama
+                // capture response from groq
                 Console.WriteLine($"write files: {directory}");
                 await File.WriteAllTextAsync(responseFileContent, response.Choices.First().Message.Content);
 
@@ -79,13 +80,13 @@ internal class Program
                 await responseStream.FlushAsync();
             }
 
-            // process responses to generate new application
-            Console.WriteLine($"create output: {directory}");
-            if (File.Exists(responseFileContent))
-            {
-                var responseContent = await File.ReadAllTextAsync(responseFileContent);
-                await ProcessResponseContentAsync(responseContent, outFolder);
-            }
+            //// process responses to generate new application
+            //Console.WriteLine($"create output: {directory}");
+            //if (File.Exists(responseFileContent))
+            //{
+            //    var responseContent = await File.ReadAllTextAsync(responseFileContent);
+            //    await ProcessResponseContentAsync(responseContent, outFolder);
+            //}
         }
     }
 

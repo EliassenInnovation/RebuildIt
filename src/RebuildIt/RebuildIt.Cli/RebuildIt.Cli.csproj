@@ -22,6 +22,9 @@
     <None Update="Prompts\Angular2React.md.hbs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Prompts\GenerateDocumentationForThisCode.md.hbs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

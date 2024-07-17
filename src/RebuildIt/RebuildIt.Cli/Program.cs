@@ -9,9 +9,10 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
-        var inputPath = @"C:\Repos\Nucleus\NG.Core\src";
-        var outputPath = @".\RX.Core\src";
-        var promptTemplateSource = @".\Prompts\Angular2React.md.hbs";
+        //var inputPath = @"C:\Repos\Nucleus\Net.Api";
+        var inputPath = @"C:\Repos\Nucleus\Net.Libs\docs";
+        var outputPath = @".\Net.Core\src";
+        var promptTemplateSource = @".\Prompts\GenerateDocumentationForThisCode.md.hbs"; // @".\Prompts\Angular2React.md.hbs";
 
         //app starts here
         inputPath = Path.GetFullPath(inputPath);
